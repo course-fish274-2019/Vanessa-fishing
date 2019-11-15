@@ -1,0 +1,26 @@
+---
+title: "Fish Catches"
+author: "Vanessa Murakami"
+date: "11/14/2019"
+output: html_document
+---
+
+## Fish Catches
+What is going to be looked at will be if certain species of fish are being caught depending on year and country.
+
+##Required Packages
+
+```{r}
+library(dplyr)
+library(ggplot2)
+```
+
+
+## Belgium Fish Catches from 2006-2014
+
+```{r}
+fish_catch<-read.csv("Clean_Data/BelgiumCatch.csv")
+print(fish_catch)
+```
+
+

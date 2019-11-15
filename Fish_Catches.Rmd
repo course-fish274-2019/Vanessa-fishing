@@ -26,7 +26,7 @@ head(all_data)
 
 
 
-```{r}
+```{r,cache.comments=FALSE}
 #Belgium catches
 BE<-filter(all_data,Country=="BE")
 sum(BE[,5])
@@ -165,9 +165,9 @@ sum(UK[,13])
 
 ```{r}
 total_catch<-read.csv("Clean_Data/Total_catch.csv")
-total_catch
+head(total_catch)
 data<-gather(total_catch,key, value, -Country)
-data
+head(data)
 ggplot(data, aes(key,value))+
   geom_bar(aes(fill=Country),stat="identity",position="dodge")+
   labs(x="Year")
@@ -205,7 +205,10 @@ seven
 six<-sum(fish_catch[,11])
 six
 ```
-Matrix of fish caught in each year:
+
+
+
+Data frame of fish caught in each year:
 
 ```{r}
 by_year <- matrix(c(2014, 79514,
@@ -222,29 +225,20 @@ colnames(by_year)<-c("Year", "Number_of_Fish")
 by_year
 catch_per_year<-data.frame(by_year)
 catch_per_year
-ggplot(catch_per_year)+
-  geom_point(aes(Year,Number_of_Fish))
-ggsave("Figures/Belgium_Catches_per_Year_histogram.jpg")
-
 
 ```
 
 
 
-## Histogram of fish caught from each year
-
-
-
-
-
-
-
-## Comparing types of fish caught in 2014 vs 2006
+## Scatter Plot of fish caught from each year
 
 ```{r}
-ANF<-filter(fish_catch,Species=="ANF")
-ANF
-sum(ANF[,3])
+ggplot(catch_per_year)+
+  geom_point(aes(Year,Number_of_Fish))
+ggsave("Figures/Belgium_Catches_per_Year_scatter.jpg")
+
 ```
+
+
 
 

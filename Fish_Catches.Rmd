@@ -13,6 +13,7 @@ What is going to be looked at will be if certain species of fish are being caugh
 ```{r}
 library(dplyr)
 library(ggplot2)
+library(tidyverse)
 ```
 
 ## Looking at all catches in 34 countries for 2006, 2010, and 2014
@@ -163,32 +164,13 @@ sum(UK[,13])
 
 
 ```{r}
-total_catch<-matrix(c(  
-                      79514, 65723, 67564, 
-                      674732, 661578, 884707, 
-                      2309358, 2596888, 2680872, 
-                      242623, 340400, 296160, 
-                      1125042, 1195609, 1163588, 
-                      616519, 508880, 451731, 
-                      2233183, 1569259, 2597422, 
-                      1324899, 1021874, 1310819, 
-                      4572, 10119, 5265, 
-                      548995, 123637, 150961, 
-                      889214, 971306, 698563, 
-                      13369, 24028, 3627, 
-                      4416, 5466, 0, 
-                      160215, 78157, 67564, 
-                      246703, 305034, 335881, 
-                      903008, 942744, 1145406, 
-                      751748, 9369447, 7987448,
-                      496597, 462437, 467510, 
-                      430327, 569835, 582531, 
-                      3682516, 3645490, 3441168, 
-                      622133, 770899, 967208, 
-                      2315921, 1822181, 1868627), byrow=T, nrow=22, ncol=3)
-rownames(total_catch)<-c("BE", "DE", "DK", "EE", "ES", "FI", "FO", "FR", "GG", "GL", "IE", "IM", "JE", "LT", "LV", "NL", "NO", "PL", "PT", "RU", "SE", "UK")
-colnames(total_catch)<-c("2014", "2010", "2006")
+total_catch<-read.csv("Clean_Data/Total_catch.csv")
 total_catch
+data<-gather(total_catch,key, value, -Country)
+data
+ggplot(data, aes(key,value))+
+  geom_bar(aes(fill=Country),stat="identity",position="dodge")
+
 ```
 
 

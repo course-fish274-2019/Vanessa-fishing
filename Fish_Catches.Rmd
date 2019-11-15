@@ -23,4 +23,43 @@ fish_catch<-read.csv("Clean_Data/BelgiumCatch.csv")
 print(fish_catch)
 ```
 
+## Comparing Amount caught in 2006-2014
+
+```{r}
+fourteen<-sum(fish_catch[,3])
+fourteen
+thirteen<-sum(fish_catch[,4])
+thirteen
+twelve<-sum(fish_catch[,5])
+twelve
+eleven<-sum(fish_catch[,6])
+eleven
+ten<-sum(fish_catch[,7])
+ten
+nine<-sum(fish_catch[,8])
+nine
+eight<-sum(fish_catch[,9])
+eight
+seven<-sum(fish_catch[,10])
+seven
+six<-sum(fish_catch[,11])
+six
+```
+
+
+
+
+
+
+
+
+
+## Comparing types of fish caught in 2014 vs 2006
+
+```{r}
+ANF<-filter(fish_catch,Species=="ANF")
+ANF
+sum(ANF[,3])
+```
+
 

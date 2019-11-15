@@ -16,15 +16,16 @@ library(ggplot2)
 library(tidyverse)
 ```
 
-## Looking at all catches in 34 countries for 2006, 2010, and 2014
+## Looking at all catches in 22 countries for 2006, 2010, and 2014
 
+These years were picked because it will look at the first, middle, and last years collected.
 
 ```{r}
 all_data<-read.csv("Raw_Data/fish_catches.csv")
 head(all_data)
 ```
 
-
+**Calculating sums for each country for the years 2006, 2010, and 2014
 
 ```{r,cache.comments=FALSE}
 #Belgium catches
@@ -161,7 +162,11 @@ sum(UK[,13])
 
 
 ```
+Get rid of the countries that didn't have any catch for all three years looked at.
 
+## Histogram for catch for 22 countires in years 2006, 2010, and 2014
+
+Data frame of the file "Clean_Data/Total_catch.csv" was created using excel spreadsheet and transfered to a csv to be looked at in R.
 
 ```{r}
 total_catch<-read.csv("Clean_Data/Total_catch.csv")
@@ -183,7 +188,7 @@ fish_catch<-read.csv("Clean_Data/BelgiumCatch.csv")
 head(fish_catch)
 ```
 
-## Comparing Amount caught in 2006-2014
+** Calculating sums for each year
 
 ```{r,message=FALSE}
 fourteen<-sum(fish_catch[,3])

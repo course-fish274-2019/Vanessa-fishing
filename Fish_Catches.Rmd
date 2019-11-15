@@ -169,13 +169,11 @@ total_catch
 data<-gather(total_catch,key, value, -Country)
 data
 ggplot(data, aes(key,value))+
-  geom_bar(aes(fill=Country),stat="identity",position="dodge")
+  geom_bar(aes(fill=Country),stat="identity",position="dodge")+
+  labs(x="Year")
+ggsave("Figures/Country_Catches_Histogram.jpg")
 
 ```
-
-
-
-
 
 
 ## Belgium Fish Catches from 2006-2014
@@ -216,10 +214,19 @@ by_year <- matrix(c(2014, 79514,
                 2011, 66582,
                  2010, 65723,
                  2009, 63634,
-                 2008, 66298, 
-                2007, 72089,
+                2008, 66298, 
+              2007, 72089,
                 2006, 67564), byrow=T, nrow=9, ncol=2)
 by_year
+colnames(by_year)<-c("Year", "Number_of_Fish")
+by_year
+catch_per_year<-data.frame(by_year)
+catch_per_year
+ggplot(catch_per_year)+
+  geom_point(aes(Year,Number_of_Fish))
+ggsave("Figures/Belgium_Catches_per_Year_histogram.jpg")
+
+
 ```
 
 

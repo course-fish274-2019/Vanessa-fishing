@@ -25,18 +25,6 @@ sum(BE[,5])
 sum(BE[,9])
 sum(BE[,13])
 
-#Bularia catches
-BG<-filter(all_data,Country=="BG")
-sum(BG[,5])
-sum(BG[,9])
-sum(BG[,13])
-
-#Canada Catches
-CA<-filter(all_data,Country=="CA")
-sum(CA[,5])
-sum(CA[,9])
-sum(CA[,13])
-
 #Germany catches
 DE<-filter(all_data,Country=="DE")
 sum(DE[,5])
@@ -169,32 +157,6 @@ UK<-filter(all_data,Country=="UK")
 sum(UK[,5])
 sum(UK[,9])
 sum(UK[,13])
-
-#UK(England) catches
-UKE<-filter(all_data,Country=="UKE")
-sum(UKE[,5])
-sum(UKE[,9])
-sum(UKE[,13])
-
-
-#UK (Northern Ireland) catches
-UKN<-filter(all_data,Country=="UKN")
-sum(UKN[,5])
-sum(UKN[,9])
-sum(UKN[,13])
-
-#UK (Scotland) catches
-UKS<-filter(all_data,Country=="UKS")
-sum(UKS[,5])
-sum(UKS[,9])
-sum(UKS[,13])
-
-#United States Catches
-US<-filter(all_data,Country=="US")
-sum(US[,5])
-sum(US[,9])
-sum(US[,13])
-
 
 
 ```

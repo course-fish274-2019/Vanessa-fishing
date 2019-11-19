@@ -182,14 +182,15 @@ Data frame of the file "Clean_Data/Total_catch.csv" was created using excel spre
 ```{r}
 total_catch<-read.csv("Clean_Data/Total_catch.csv")
 head(total_catch)
-data<-gather(total_catch,key, value, -Country)
-head(data)
-ggplot(data, aes(key,value))+
+total_catch_long<-gather(total_catch,year, counts, -Country)
+head(total_catch_long)
+ggplot(total_catch_long, aes(year,counts))+
   geom_bar(aes(fill=Country),stat="identity",position="dodge")+
   labs(x="Year")
 ggsave("Figures/Country_Catches_Histogram.jpg")
 
 ```
+
 
 
 ## Belgium Fish Catches from 2006-2014
@@ -199,62 +200,28 @@ fish_catch<-read.csv("Clean_Data/BelgiumCatch.csv")
 head(fish_catch)
 ```
 
-** Calculating sums for each year **
 
-```{r,message=FALSE}
-fourteen<-sum(fish_catch[,3])
-fourteen
-thirteen<-sum(fish_catch[,4])
-thirteen
-twelve<-sum(fish_catch[,5])
-twelve
-eleven<-sum(fish_catch[,6])
-eleven
-ten<-sum(fish_catch[,7])
-ten
-nine<-sum(fish_catch[,8])
-nine
-eight<-sum(fish_catch[,9])
-eight
-seven<-sum(fish_catch[,10])
-seven
-six<-sum(fish_catch[,11])
-six
+
+
+```{r}
+BEdata<- fish_catch %>%
+  gather(year, count, X2014:X2013:X2012:X2011:X2010:X2009:X2008:X2007:X2006)
+BEdataframe<-data.frame(BEdata)
+head(BEdataframe)
+BE_catch<-BEdata%>%
+  select(year,count)
+head(BE_catch)
+new_BE<-BE_catch%>%
+  group_by(year)%>%
+  summarize(x=sum(count))
+new_BE
 ```
 
 
-
-Data frame of fish caught in each year:
-
 ```{r}
-by_year <- matrix(c(2014, 79514,
-                2013, 76153,
-                2012, 73134,
-                2011, 66582,
-                 2010, 65723,
-                 2009, 63634,
-                2008, 66298, 
-              2007, 72089,
-                2006, 67564), byrow=T, nrow=9, ncol=2)
-by_year
-colnames(by_year)<-c("Year", "Number_of_Fish")
-by_year
-catch_per_year<-data.frame(by_year)
-catch_per_year
-
-```
-
-
-
-## Scatter Plot of fish caught from each year
-
-```{r}
-ggplot(catch_per_year)+
-  geom_point(aes(Year,Number_of_Fish))
+ggplot(new_BE)+
+  geom_point(aes(year,x))+
+  labs(y="total count")
 ggsave("Figures/Belgium_Catches_per_Year_scatter.jpg")
-
 ```
-
-
-
 

@@ -36,6 +36,19 @@ data_long<-all_data %>%
 
 ```
 
+```{r}
+total<- all_data %>%
+  select(Species, Country,X2014,X2010,X2006 )%>%
+  gather(year, count, X2014:X2010:X2006)
+total_caught<-data.frame(total)
+```
+
+
+```{r}
+new_total<-total_caught%>%
+  group_by(Country)%>%
+  summarize(count=sum(count))
+```
 
 
 ```{r,cache.comments=FALSE}
@@ -203,11 +216,14 @@ head(fish_catch)
 
 
 
+
+
 ```{r}
 BEdata<- fish_catch %>%
   gather(year, count, X2014:X2013:X2012:X2011:X2010:X2009:X2008:X2007:X2006)
 BEdataframe<-data.frame(BEdata)
 head(BEdataframe)
+write.csv(BEdataframe,"Clean_data/BE_total_catch.csv")
 BE_catch<-BEdata%>%
   select(year,count)
 head(BE_catch)
@@ -218,6 +234,8 @@ new_BE
 ```
 
 
+
+
 ```{r}
 ggplot(new_BE)+
   geom_point(aes(year,x))+
@@ -225,3 +243,12 @@ ggplot(new_BE)+
 ggsave("Figures/Belgium_Catches_per_Year_scatter.jpg")
 ```
 
+
+
+Looking at total count per species caught in 2006-2014
+
+```{r}
+BE_Species<-BEdataframe%>%
+  group_by(Species)%>%
+  summarise(count=sum(count))
+```

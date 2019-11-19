@@ -2,7 +2,9 @@
 title: "Fish Catches"
 author: "Vanessa Murakami"
 date: "11/14/2019"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ## Fish Catches
@@ -25,7 +27,16 @@ all_data<-read.csv("Raw_Data/fish_catches.csv")
 head(all_data)
 ```
 
-**Calculating sums for each country for the years 2006, 2010, and 2014
+**Calculating sums for each country for the years 2006, 2010, and 2014 **
+
+
+```{r}
+data_long<-all_data %>%
+  gather(year, fish_counts,X2014:X2013:X2012:X2011:X2010:X2009:X2008:X2007:X2006)
+
+```
+
+
 
 ```{r,cache.comments=FALSE}
 #Belgium catches
@@ -188,7 +199,7 @@ fish_catch<-read.csv("Clean_Data/BelgiumCatch.csv")
 head(fish_catch)
 ```
 
-** Calculating sums for each year
+** Calculating sums for each year **
 
 ```{r,message=FALSE}
 fourteen<-sum(fish_catch[,3])

@@ -1,0 +1,47 @@
+Fish Catches in years 2006-2014
+========================================================
+author: Vanessa Murakami
+date: 
+autosize: true
+
+
+About the Data
+========================================================
+- Packages:
+```{r}
+library(tidyverse)
+library(dplyr)
+```
+- 35 Countries surveyed on fish caught in 2006-2014
+- Going to look at comparisons between each country
+- Also looking at one country throughout the years
+
+Data Collected
+========================================================
+
+```{r,echo=TRUE}
+all_data<-read.csv("Raw_Data/fish_catches.csv")
+head(all_data)
+```
+
+Looking at Total catch in years 2006, 2010 and 2014
+========================================================
+
+```{r, echo=FALSE}
+total_catch<-read.csv("Clean_Data/Total_catch.csv")
+head(total_catch)
+```
+```{r}
+total_catch_long<-gather(total_catch,year, counts, -Country)
+head(total_catch_long)
+```
+- Made year and counts their own column
+
+Histogram of Countries
+========================================================
+```{r}
+ggplot(total_catch_long, aes(year,counts))+
+  geom_bar(aes(fill=Country),stat="identity",position="dodge")+
+  labs(x="Year")
+```
+

@@ -4,21 +4,23 @@ author: Vanessa Murakami
 date: 
 autosize: true
 
-
 About the Data
 ========================================================
+- 35 Countries surveyed on fish caught in 2006-2014
+- Going to look at comparisons between each country
+- Also looking at one country throughout the years
+
+![alt text](Pictures/barracuda_fish_school_1050x700.jpg)
+
+Data Collected
+========================================================
+
 - Packages:
 ```{r}
 library(tidyverse)
 library(dplyr)
 ```
-- 35 Countries surveyed on fish caught in 2006-2014
-- Going to look at comparisons between each country
-- Also looking at one country throughout the years
-
-Data Collected
-========================================================
-
+- Raw Data
 ```{r,echo=TRUE}
 all_data<-read.csv("Raw_Data/fish_catches.csv")
 head(all_data)
@@ -39,9 +41,45 @@ head(total_catch_long)
 
 Histogram of Countries
 ========================================================
-```{r}
+```{r, echo=FALSE,out.height="600px",out.width="1000px"}
 ggplot(total_catch_long, aes(year,counts))+
   geom_bar(aes(fill=Country),stat="identity",position="dodge")+
   labs(x="Year")
 ```
+
+- NO (Norawy) had the biggest change
+- RU, SE, and UK had the smallest change
+
+
+Belgium Fish Catches from 2006-2014
+========================================================
+```{r,echo=FALSE}
+fish_catch<-read.csv("Clean_Data/BelgiumCatch.csv")
+head(fish_catch)
+```
+
+![alt text](Pictures/belgium-location-map.jpg)
+
+Manipulation of Data for Belgium Catches
+========================================================
+```{r}
+BEdata<- fish_catch %>%
+  gather(year, count, X2014:X2013:X2012:X2011:X2010:X2009:X2008:X2007:X2006)
+BEdataframe<-data.frame(BEdata)
+BE_catch<-BEdata%>%
+  select(year,count)
+new_BE<-BE_catch%>%
+  group_by(year)%>%
+  summarize(count=sum(count))
+new_BE
+```
+
+Scatter plot of Belgium Catches 2006-2014
+========================================================
+```{r, echo=FALSE,out.height="600px",out.width="1000px"}
+ggplot(new_BE)+
+  geom_point(aes(year,count))+
+  labs(y="total count")
+```
+
 

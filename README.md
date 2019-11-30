@@ -14,3 +14,4 @@ Files in order of use:
 4. Figures/Country_Catches_Histogram.jpg - histogram looking at 22 countires' catches for 2006, 2010, and 2014.
 5. Clean_Data/BelgiumCatch.csv - data from the raw data in (1) looking at just Belgium catches per year
 6. Figures/Belgium_Catches_per_Year_scatter.jpg - figure looking at the relation between year and number of fish caught
+7. fishing_presentation.RPres - presentation for data collected and coded for.

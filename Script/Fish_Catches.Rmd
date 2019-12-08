@@ -2,6 +2,240 @@
 title: "Fish Catches"
 author: "Vanessa Murakami"
 date: "11/14/2019"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
+## Fish Catches
+What is going to be looked at will be if certain species of fish are being caught depending on year and country.
+
+##Required Packages
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(tidyverse)
+```
+
+## Looking at all catches in 22 countries for 2006, 2010, and 2014
+
+These years were picked because it will look at the first, middle, and last years collected.
+
+```{r}
+all_data<-read.csv("Raw_Data/fish_catches.csv")
+head(all_data)
+```
+
+**Calculating sums for each country for the years 2006, 2010, and 2014 **
+
+
+```{r}
+data_long<-all_data %>%
+  gather(year, fish_counts,X2014:X2013:X2012:X2011:X2010:X2009:X2008:X2007:X2006)
+
+```
+
+```{r}
+total<- all_data %>%
+  select(Species, Country,X2014,X2010,X2006 )%>%
+  gather(year, count, X2014:X2010:X2006)
+total_caught<-data.frame(total)
+```
+
+
+```{r,cache.comments=FALSE}
+#Belgium catches
+BE<-filter(all_data,Country=="BE")
+sum(BE[,5])
+sum(BE[,9])
+sum(BE[,13])
+
+#Germany catches
+DE<-filter(all_data,Country=="DE")
+sum(DE[,5])
+sum(DE[,9])
+sum(DE[,13])
+
+#Denmark catches
+DK<-filter(all_data,Country=="DK")
+sum(DK[,5])
+sum(DK[,9])
+sum(DK[,13])
+
+#Estonia catches
+EE<-filter(all_data,Country=="EE")
+sum(EE[,5])
+sum(EE[,9])
+sum(EE[,13])
+
+#Spain catches
+ES<-filter(all_data,Country=="ES")
+sum(ES[,5])
+sum(ES[,9])
+sum(ES[,13])
+
+#Finland catches
+FI<-filter(all_data,Country=="FI")
+sum(FI[,5])
+sum(FI[,9])
+sum(FI[,13])
+
+#Faroe Islands catches
+FO<-filter(all_data,Country=="FO")
+sum(FO[,5])
+sum(FO[,9])
+sum(FO[,13])
+
+#France Catches
+FR<-filter(all_data,Country=="FR")
+sum(FR[,5])
+sum(FR[,9])
+sum(FR[,13])
+
+#UK (Chanel Island Guersney) catches
+GG<-filter(all_data,Country=="GG")
+sum(GG[,5])
+sum(GG[,9])
+sum(GG[,13])
+
+#Greenland catches
+GL<-filter(all_data,Country=="GL")
+sum(GL[,5])
+sum(GL[,9])
+sum(GL[,13])
+
+#Ireland catches
+IE<-filter(all_data,Country=="IE")
+sum(IE[,5])
+sum(IE[,9])
+sum(IE[,13])
+
+#UK (Isle of Man) catches
+IM<-filter(all_data,Country=="IM")
+sum(IM[,5])
+sum(IM[,9])
+sum(IM[,13])
+
+#UK (Channel Island Jersey) Catches
+JE<-filter(all_data,Country=="JE")
+sum(JE[,5])
+sum(JE[,9])
+sum(JE[,13])
+
+#Lithuania catches
+LT<-filter(all_data,Country=="LT")
+sum(LT[,5])
+sum(LT[,9])
+sum(BE[,13])
+
+#Latvia catches
+LV<-filter(all_data,Country=="LV")
+sum(LV[,5])
+sum(LV[,9])
+sum(LV[,13])
+
+#Netherlands catches
+NL<-filter(all_data,Country=="NL")
+sum(NL[,5])
+sum(NL[,9])
+sum(NL[,13])
+
+#Norway catches
+NO<-filter(all_data,Country=="NO")
+sum(NO[,5])
+sum(NO[,9])
+sum(NO[,13])
+
+#Poland catches
+PL<-filter(all_data,Country=="PL")
+sum(PL[,5])
+sum(PL[,9])
+sum(PL[,13])
+
+#Portugal catches
+PT<-filter(all_data,Country=="PT")
+sum(PT[,5])
+sum(PT[,9])
+sum(PT[,13])
+
+#Russia catches
+RU<-filter(all_data,Country=="RU")
+sum(RU[,5])
+sum(RU[,9])
+sum(RU[,13])
+
+#Sweden catches
+SE<-filter(all_data,Country=="SE")
+sum(SE[,5])
+sum(SE[,9])
+sum(SE[,13])
+
+#United Kingdom catches
+UK<-filter(all_data,Country=="UK")
+sum(UK[,5])
+sum(UK[,9])
+sum(UK[,13])
+
+
+```
+Get rid of the countries that didn't have any catch for all three years looked at.
+
+## Histogram for catch for 22 countires in years 2006, 2010, and 2014
+
+Data frame of the file "Clean_Data/Total_catch.csv" was created using excel spreadsheet and transfered to a csv to be looked at in R.
+
+```{r}
+total_catch<-read.csv("Clean_Data/Total_catch.csv")
+head(total_catch)
+total_catch_long<-gather(total_catch,year, counts, -Country)
+head(total_catch_long)
+ggplot(total_catch_long, aes(year,counts))+
+  geom_bar(aes(fill=Country),stat="identity",position="dodge")+
+  labs(x="Year")
+ggsave("Figures/Country_Catches_Histogram.jpg")
+
+```
+
+
+## Belgium Fish Catches from 2006-2014
+
+```{r}
+fish_catch<-read.csv("Clean_Data/BelgiumCatch.csv")
+head(fish_catch)
+```
+
+
+
+```{r}
+BEdata<- fish_catch %>%
+  gather(year, count, X2014:X2013:X2012:X2011:X2010:X2009:X2008:X2007:X2006)
+BEdataframe<-data.frame(BEdata)
+head(BEdataframe)
+write.csv(BEdataframe,"Clean_data/BE_total_catch.csv")
+BE_catch<-BEdata%>%
+  select(year,count)
+head(BE_catch)
+new_BE<-BE_catch%>%
+  group_by(year)%>%
+  summarize(count=sum(count))
+new_BE
+```
+
+
+
+
+```{r}
+ggplot(new_BE)+
+  geom_point(aes(year,count))+
+  labs(y="total count")
+ggsave("Figures/Belgium_Catches_per_Year_scatter.jpg")
+```
+
+Looking at total count per species caught in 2006-2014
+
+```{r}
+BE_Species<-BEdataframe%>%
+  group_by(Species)%>%
+  summarise(count=sum(count))
+```

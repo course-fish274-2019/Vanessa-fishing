@@ -33,6 +33,7 @@ head(all_data)
 ```{r}
 data_long<-all_data %>%
   gather(year, fish_counts,X2014:X2013:X2012:X2011:X2010:X2009:X2008:X2007:X2006)
+data_long
 
 ```
 
@@ -41,13 +42,6 @@ total<- all_data %>%
   select(Species, Country,X2014,X2010,X2006 )%>%
   gather(year, count, X2014:X2010:X2006)
 total_caught<-data.frame(total)
-```
-
-
-```{r}
-new_total<-total_caught%>%
-  group_by(Country)%>%
-  summarize(count=sum(count))
 ```
 
 
@@ -205,16 +199,12 @@ ggsave("Figures/Country_Catches_Histogram.jpg")
 ```
 
 
-
 ## Belgium Fish Catches from 2006-2014
 
 ```{r}
 fish_catch<-read.csv("Clean_Data/BelgiumCatch.csv")
 head(fish_catch)
 ```
-
-
-
 
 
 
@@ -229,7 +219,7 @@ BE_catch<-BEdata%>%
 head(BE_catch)
 new_BE<-BE_catch%>%
   group_by(year)%>%
-  summarize(x=sum(count))
+  summarize(count=sum(count))
 new_BE
 ```
 
@@ -238,12 +228,10 @@ new_BE
 
 ```{r}
 ggplot(new_BE)+
-  geom_point(aes(year,x))+
+  geom_point(aes(year,count))+
   labs(y="total count")
 ggsave("Figures/Belgium_Catches_per_Year_scatter.jpg")
 ```
-
-
 
 Looking at total count per species caught in 2006-2014
 
@@ -251,4 +239,119 @@ Looking at total count per species caught in 2006-2014
 BE_Species<-BEdataframe%>%
   group_by(Species)%>%
   summarise(count=sum(count))
+BE_Species
+```
+
+```{r}
+NO<-all_data%>%
+  filter(Country=="NO")%>%
+  select(X2014,X2013,X2012,X2011,X2010,X2009,X2008,X2007,X2006)
+NO
+longNO<-gather(NO)
+sum(NO$X2014)
+NO_by_year<-matrix(c(2014, sum(NO$X2014),
+       2013, sum(NO$X2013),
+       2012, sum(NO$X2012),
+       2011, sum(NO$X2011),
+       2010, sum(NO$X2010),
+       2009, sum(NO$X2009),
+       2008, sum(NO$X2008),
+       2007, sum(NO$X2007),
+       2006, sum(NO$X2006)), nrow=9, ncol=2,byrow=TRUE) 
+colnames(NO_by_year)<-c("year","count")
+NO_by_year
+NO_data<-data.frame(NO_by_year)
+ggplot(NO_data)+
+  geom_point(aes(year,count))+
+  labs(y="total count")
+ggsave("Figures/NO_Catches_per_Year_scatter.jpg")
+
+
+```
+
+
+SE Fish Catches
+
+```{r}
+SE<-all_data%>%
+  filter(Country=="SE")%>%
+  select(X2014,X2013,X2012,X2011,X2010,X2009,X2008,X2007,X2006)
+SE
+longSE<-gather(SE)
+sum(SE$X2014)
+SE_by_year<-matrix(c(2014, sum(SE$X2014),
+       2013, sum(SE$X2013),
+       2012, sum(SE$X2012),
+       2011, sum(SE$X2011),
+       2010, sum(SE$X2010),
+       2009, sum(SE$X2009),
+       2008, sum(SE$X2008),
+       2007, sum(SE$X2007),
+       2006, sum(SE$X2006)), nrow=9, ncol=2,byrow=TRUE) 
+colnames(SE_by_year)<-c("year","count")
+SE_by_year
+SE_data<-data.frame(SE_by_year)
+ggplot(SE_data)+
+  geom_point(aes(year,count))+
+  labs(y="total count")
+ggsave("Figures/SE_Catches_per_Year_scatter.jpg")
+
+```
+
+
+RU Fish Catches
+
+```{r}
+RU<-all_data%>%
+  filter(Country=="RU")%>%
+  select(X2014,X2013,X2012,X2011,X2010,X2009,X2008,X2007,X2006)
+RU
+longRU<-gather(RU)
+sum(RU$X2014)
+RU_by_year<-matrix(c(2014, sum(RU$X2014),
+       2013, sum(RU$X2013),
+       2012, sum(RU$X2012),
+       2011, sum(RU$X2011),
+       2010, sum(RU$X2010),
+       2009, sum(RU$X2009),
+       2008, sum(RU$X2008),
+       2007, sum(RU$X2007),
+       2006, sum(RU$X2006)), nrow=9, ncol=2,byrow=TRUE) 
+colnames(RU_by_year)<-c("year","count")
+RU_by_year
+RU_data<-data.frame(RU_by_year)
+ggplot(RU_data)+
+  geom_point(aes(year,count))+
+  labs(y="total count")
+ggsave("Figures/RU_Catches_per_Year_scatter.jpg")
+
+```
+
+
+UK Fish Catches
+
+```{r}
+UK<-all_data%>%
+  filter(Country=="UK")%>%
+  select(X2014,X2013,X2012,X2011,X2010,X2009,X2008,X2007,X2006)
+NO
+longUK<-gather(UK)
+sum(UK$X2014)
+UK_by_year<-matrix(c(2014, sum(UK$X2014),
+       2013, sum(UK$X2013),
+       2012, sum(UK$X2012),
+       2011, sum(UK$X2011),
+       2010, sum(UK$X2010),
+       2009, sum(UK$X2009),
+       2008, sum(UK$X2008),
+       2007, sum(UK$X2007),
+       2006, sum(UK$X2006)), nrow=9, ncol=2,byrow=TRUE) 
+colnames(UK_by_year)<-c("year","count")
+UK_by_year
+UK_data<-data.frame(UK_by_year)
+ggplot(UK_data)+
+  geom_point(aes(year,count))+
+  labs(y="total count")
+ggsave("Figures/UK_Catches_per_Year_scatter.jpg")
+
 ```

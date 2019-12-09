@@ -77,8 +77,8 @@ head(total_catch_long)
 
 Histogram of Countries
 ========================================================
-<img src="fishing_presentation-figure/unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" width="1000px" height="600px" />
-
+![plot of chunk unnamed-chunk-5](fishing_presentation-figure/unnamed-chunk-5-1.png)
+***
 - NO (Norawy) had the biggest change
 - RU, SE, and UK had the smallest change
 
@@ -130,6 +130,33 @@ new_BE
 
 Scatter plot of Belgium Catches 2006-2014
 ========================================================
-<img src="fishing_presentation-figure/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" width="1000px" height="600px" />
+![plot of chunk unnamed-chunk-8](fishing_presentation-figure/unnamed-chunk-8-1.png)
+
+***
+- Geneal increase of fish catches
+
+Norway Fish catches
+========================================================
+
+![alt text](Figures/NO_Catches_per_Year_scatter.jpg)
+
+Russia Fish Catches
+========================================================
+![alt text](Figures/RU_Catches_per_Year_scatter.jpg)
+
+SE Fish catches
+========================================================
+![alt text](Figures/SE_Catches_per_Year_scatter.jpg)
+
+UK Fish catches
+========================================================
+![alt text](Figures/UK_Catches_per_Year_scatter.jpg)
+
+
+Conclusion
+========================================================
+- 
+
+
 
 

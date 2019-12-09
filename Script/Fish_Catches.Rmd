@@ -269,6 +269,88 @@ ggplot(NO_data)+
 ```
 
 
+SE Fish Catches
+
+```{r}
+SE<-all_data%>%
+  filter(Country=="SE")%>%
+  select(X2014,X2013,X2012,X2011,X2010,X2009,X2008,X2007,X2006)
+SE
+longSE<-gather(SE)
+sum(SE$X2014)
+SE_by_year<-matrix(c(2014, sum(SE$X2014),
+       2013, sum(SE$X2013),
+       2012, sum(SE$X2012),
+       2011, sum(SE$X2011),
+       2010, sum(SE$X2010),
+       2009, sum(SE$X2009),
+       2008, sum(SE$X2008),
+       2007, sum(SE$X2007),
+       2006, sum(SE$X2006)), nrow=9, ncol=2,byrow=TRUE) 
+colnames(SE_by_year)<-c("year","count")
+SE_by_year
+SE_data<-data.frame(SE_by_year)
+ggplot(SE_data)+
+  geom_point(aes(year,count))+
+  labs(y="total count")
 
 
+```
 
+
+RU Fish Catches
+
+```{r}
+RU<-all_data%>%
+  filter(Country=="RU")%>%
+  select(X2014,X2013,X2012,X2011,X2010,X2009,X2008,X2007,X2006)
+RU
+longRU<-gather(RU)
+sum(RU$X2014)
+RU_by_year<-matrix(c(2014, sum(RU$X2014),
+       2013, sum(RU$X2013),
+       2012, sum(RU$X2012),
+       2011, sum(RU$X2011),
+       2010, sum(RU$X2010),
+       2009, sum(RU$X2009),
+       2008, sum(RU$X2008),
+       2007, sum(RU$X2007),
+       2006, sum(RU$X2006)), nrow=9, ncol=2,byrow=TRUE) 
+colnames(RU_by_year)<-c("year","count")
+RU_by_year
+RU_data<-data.frame(RU_by_year)
+ggplot(RU_data)+
+  geom_point(aes(year,count))+
+  labs(y="total count")
+
+
+```
+
+
+UK Fish Catches
+
+```{r}
+UK<-all_data%>%
+  filter(Country=="UK")%>%
+  select(X2014,X2013,X2012,X2011,X2010,X2009,X2008,X2007,X2006)
+NO
+longUK<-gather(UK)
+sum(UK$X2014)
+UK_by_year<-matrix(c(2014, sum(UK$X2014),
+       2013, sum(UK$X2013),
+       2012, sum(UK$X2012),
+       2011, sum(UK$X2011),
+       2010, sum(UK$X2010),
+       2009, sum(UK$X2009),
+       2008, sum(UK$X2008),
+       2007, sum(UK$X2007),
+       2006, sum(UK$X2006)), nrow=9, ncol=2,byrow=TRUE) 
+colnames(UK_by_year)<-c("year","count")
+UK_by_year
+UK_data<-data.frame(UK_by_year)
+ggplot(UK_data)+
+  geom_point(aes(year,count))+
+  labs(y="total count")
+
+
+```

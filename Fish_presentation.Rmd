@@ -62,12 +62,11 @@ head(fish_catch)
 ![](Pictures/belgium-location-map.jpg){width=65%,height=65%}
 
 
-## Manipulation of Data for Belgium Catches
+## Manipulation of Belgium Catches
 
 ```{r, warning=FALSE}
 BEdata<- fish_catch %>%
   gather(year, count, X2014:X2013:X2012:X2011:X2010:X2009:X2008:X2007:X2006)
-BEdataframe<-data.frame(BEdata)
 BE_catch<-BEdata%>%
   select(year,count)
 new_BE<-BE_catch%>%
@@ -200,8 +199,7 @@ ggplot(long_data)+
 
 
 ## Conclusion
-- Generally, an overall decreae in fish catches
+- Generally, an overall decrease in fish catches
 - Some countries change more rapidly than others
 ![](Pictures/commercial-fishing-boat.jpg)
-
 

@@ -1,7 +1,7 @@
 ---
 title: "Fish Catches"
 author: "Vanessa Murakami"
-date: "12/9/2019"
+date: "12/11/2019"
 output: ioslides_presentation
 ---
 
@@ -81,12 +81,15 @@ new_BE
 
 ```{r, echo=FALSE}
 ggplot(new_BE)+
-  geom_point(aes(year,count))+
+  geom_point(aes(year,count),color="orange")+
   labs(y="total count")
 ```
 ***
 - Geneal increase of fish catches
 
+## World Map
+
+![](Pictures/world-map.png){width=90%}
 
 ## Norway Fish catches
 
@@ -107,7 +110,7 @@ NO_by_year<-matrix(c(2014, sum(NO$X2014),
 colnames(NO_by_year)<-c("year","count")
 NO_data<-data.frame(NO_by_year)
 ggplot(NO_data)+
-  geom_point(aes(year,count))+
+  geom_point(aes(year,count),color="purple")+
   labs(y="total count")
 ```
 
@@ -131,7 +134,7 @@ RU_by_year<-matrix(c(2014, sum(RU$X2014),
 colnames(RU_by_year)<-c("year","count")
 RU_data<-data.frame(RU_by_year)
 ggplot(RU_data)+
-  geom_point(aes(year,count))+
+  geom_point(aes(year,count), color="hot pink")+
   labs(y="total count")
 ```
 
@@ -155,7 +158,7 @@ SE_by_year<-matrix(c(2014, sum(SE$X2014),
 colnames(SE_by_year)<-c("year","count")
 SE_data<-data.frame(SE_by_year)
 ggplot(SE_data)+
-  geom_point(aes(year,count))+
+  geom_point(aes(year,count),color="magenta")+
   labs(y="total count")
 ```
 
@@ -179,7 +182,7 @@ UK_by_year<-matrix(c(2014, sum(UK$X2014),
 colnames(UK_by_year)<-c("year","count")
 UK_data<-data.frame(UK_by_year)
 ggplot(UK_data)+
-  geom_point(aes(year,count,color="salmon"))+
+  geom_point(aes(year,count),color="salmon")+
   labs(y="total count")
 ```
 
@@ -197,8 +200,8 @@ ggplot(long_data)+
 
 
 ## Conclusion
->- Generally, an overall decreae in fish catches
->- Some countries change more rapidly than others
+- Generally, an overall decreae in fish catches
+- Some countries change more rapidly than others
 ![](Pictures/commercial-fishing-boat.jpg)
 
 

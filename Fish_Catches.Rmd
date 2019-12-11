@@ -2,15 +2,14 @@
 title: "Fish Catches"
 author: "Vanessa Murakami"
 date: "11/14/2019"
-output:
-  html_document: default
-  pdf_document: default
+output: ioslides_presentation
+theme: sky
 ---
 
 ## Fish Catches
 What is going to be looked at will be if certain species of fish are being caught depending on year and country.
 
-##Required Packages
+## Required Packages
 
 ```{r}
 library(dplyr)
@@ -206,7 +205,7 @@ fish_catch<-read.csv("Clean_Data/BelgiumCatch.csv")
 head(fish_catch)
 ```
 
-
+## 
 
 ```{r}
 BEdata<- fish_catch %>%
@@ -233,7 +232,7 @@ ggplot(new_BE)+
 ggsave("Figures/Belgium_Catches_per_Year_scatter.jpg")
 ```
 
-Looking at total count per species caught in 2006-2014
+## Looking at total count per species caught in 2006-2014
 
 ```{r}
 BE_Species<-BEdataframe%>%
@@ -270,7 +269,7 @@ ggsave("Figures/NO_Catches_per_Year_scatter.jpg")
 ```
 
 
-SE Fish Catches
+## SE Fish Catches
 
 ```{r}
 SE<-all_data%>%
@@ -299,7 +298,7 @@ ggsave("Figures/SE_Catches_per_Year_scatter.jpg")
 ```
 
 
-RU Fish Catches
+## RU Fish Catches
 
 ```{r}
 RU<-all_data%>%
@@ -328,7 +327,7 @@ ggsave("Figures/RU_Catches_per_Year_scatter.jpg")
 ```
 
 
-UK Fish Catches
+## UK Fish Catches
 
 ```{r}
 UK<-all_data%>%

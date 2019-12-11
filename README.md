@@ -14,4 +14,13 @@ Files in order of use:
 4. Figures/Country_Catches_Histogram.jpg - histogram looking at 22 countires' catches for 2006, 2010, and 2014.
 5. Clean_Data/BelgiumCatch.csv - data from the raw data in (1) looking at just Belgium catches per year
 6. Figures/Belgium_Catches_per_Year_scatter.jpg - figure looking at the relation between year and number of fish caught
-7. fishing_presentation.RPres - presentation for data collected and coded for.
+7. Figures/NO_Catches_per_Year_scatter.jpg - graph of Norway plots
+8.Figures/RU_Catches_per_Year_scatter.jpg - graph of Russia plots
+9.Figures/SE_Catches_per_Year_scatter.jpg - graph of Sweden plots
+10.Figures/UK_Catches_per_Year_scatter.jpg - graph of UK plots
+11. Fish_presentation.Rmd - presentation in rmarkdown with all the codings
+12. Pictures/barracuda_fish_school_1050x700.jpg - image for beginning slide
+13. Pictures/belgium-location-map.jpg - belgium map for the belgium part
+14. Pictures/commercial-fishing-boat.jpg - ending slide picture
+15. Pictures/world-map.png - picture of map for locating countries.
+16. Output/Fish_presentation.html - presentation html for use for presenting.

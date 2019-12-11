@@ -16,7 +16,6 @@ output: ioslides_presentation
 
 ```{r}
 library(tidyverse)
-library(dplyr)
 ```
 
 
@@ -25,7 +24,7 @@ library(dplyr)
 
 ```{r}
 all_data<-read.csv("Raw_Data/fish_catches.csv")
-head(all_data)
+knitr::kable(all_data[1:7,1:8])
 ```
 
 
@@ -34,11 +33,11 @@ head(all_data)
 
 ```{r, echo=FALSE}
 total_catch<-read.csv("Clean_Data/Total_catch.csv")
-head(total_catch)
+knitr::kable(total_catch[1:7,1:4])
 ```
 ```{r, echo=FALSE}
 total_catch_long<-gather(total_catch,year, counts, -Country)
-head(total_catch_long)
+knitr::kable(total_catch_long[1:7,1:3])
 ```
 - Made year and counts their own column
 
@@ -57,7 +56,7 @@ ggplot(total_catch_long, aes(year,counts))+
 
 ```{r,echo=FALSE}
 fish_catch<-read.csv("Clean_Data/BelgiumCatch.csv")
-head(fish_catch)
+knitr::kable(fish_catch[1:7,1:11])
 ```
 ![](Pictures/belgium-location-map.jpg){width=65%,height=65%}
 
@@ -72,7 +71,7 @@ BE_catch<-BEdata%>%
 new_BE<-BE_catch%>%
   group_by(year)%>%
   summarize(count=sum(count))
-new_BE
+knitr::kable(new_BE)
 ```
 
 
@@ -203,3 +202,5 @@ ggplot(long_data)+
 - Some countries change more rapidly than others
 ![](Pictures/commercial-fishing-boat.jpg)
 
+## Thank You!
+![](Pictures/Fish.png){width=105%,height=150%}

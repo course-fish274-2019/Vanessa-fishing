@@ -21,7 +21,7 @@ library(tidyverse)
 
 These years were picked because it will look at the first, middle, and last years collected.
 
-```{r}
+```{r, echo=FALSE}
 all_data<-read.csv("Raw_Data/fish_catches.csv")
 head(all_data)
 ```
